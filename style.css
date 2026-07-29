@@ -1,0 +1,704 @@
+/* ==========================================================================
+   Sicily Guest House - Minimalist Editorial Stylesheet (Warm Brown Theme)
+   Palette: Rich Espresso Brown, Warm Sand Linen, Warm Ochre
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Color Palette (Marrone Caldo Elegante)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Warm Brown & Cream Palette */
+  --bg-body: #FAF6F0;          /* Warm Cream Linen */
+  --bg-surface: #FFFFFF;       /* Pure White Card Surface */
+  --bg-dark: #2A1B15;          /* Deep Espresso Dark Section */
+  --bg-card: #F4ECE1;         /* Soft Sand Card */
+  
+  --text-main: #2C1A13;        /* Deep Rich Brown Text */
+  --text-muted: #786055;       /* Warm Muted Brown */
+  --text-light: #FAF6F0;       /* Cream Light Text */
+  
+  --primary-brown: #6E4737;    /* Warm Terracotta Brown */
+  --primary-hover: #563629;    /* Darker Brown Hover */
+  --accent-gold: #C89D66;      /* Warm Ochre Gold Accent */
+  
+  --whatsapp: #25D366;         /* WhatsApp Brand Green */
+  --whatsapp-dark: #1DA851;
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Layout & Spacing */
+  --radius-sm: 10px;
+  --radius-md: 24px;
+  --radius-lg: 36px;
+  --shadow-soft: 0 12px 40px rgba(44, 26, 19, 0.06);
+  --shadow-float: 0 16px 36px rgba(37, 211, 102, 0.3);
+  --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Typography
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+.container {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.text-center { text-align: center; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--text-main);
+}
+
+/* --------------------------------------------------------------------------
+   3. Floating WhatsApp CTA Button
+   -------------------------------------------------------------------------- */
+.whatsapp-float-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background-color: var(--whatsapp);
+  color: #FFF;
+  padding: 14px 24px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-float);
+  z-index: 1000;
+  transition: var(--transition-smooth);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.whatsapp-float-btn i {
+  font-size: 1.3rem;
+}
+
+.whatsapp-float-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  background-color: var(--whatsapp-dark);
+}
+
+@media (max-width: 576px) {
+  .whatsapp-float-btn span { display: none; }
+  .whatsapp-float-btn { padding: 16px; border-radius: 50%; }
+}
+
+/* --------------------------------------------------------------------------
+   4. Responsive Header & Navigation
+   -------------------------------------------------------------------------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 85px;
+  z-index: 900;
+  transition: var(--transition-smooth);
+  background: rgba(250, 246, 240, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(110, 71, 55, 0.1);
+}
+
+.header.scrolled {
+  height: 70px;
+  box-shadow: 0 6px 25px rgba(44, 26, 19, 0.05);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand-title span {
+  color: var(--primary-brown);
+  font-style: italic;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.nav-links a:hover {
+  color: var(--primary-brown);
+}
+
+.header-cta-btn {
+  padding: 10px 22px;
+  border-radius: 40px;
+  border: 1.5px solid var(--primary-brown);
+  color: var(--primary-brown);
+  font-size: 0.88rem;
+  font-weight: 700;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-cta-btn:hover {
+  background-color: var(--primary-brown);
+  color: #FFF;
+}
+
+/* Mobile Header Adjustment */
+@media (max-width: 768px) {
+  .header {
+    height: 70px;
+  }
+  .brand-title {
+    font-size: 1.15rem;
+  }
+  .nav-links {
+    display: none;
+  }
+  .header-cta-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Hero Section (Larger Photos)
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  padding-top: 130px;
+  padding-bottom: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+
+.hero-tag {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--primary-brown);
+  margin-bottom: 16px;
+}
+
+.hero-heading {
+  font-size: 3.6rem;
+  font-weight: 400;
+  margin-bottom: 22px;
+  letter-spacing: -1px;
+  color: var(--text-main);
+}
+
+.hero-heading em {
+  font-style: italic;
+  color: var(--primary-brown);
+}
+
+.hero-lead {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+.hero-address-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(110, 71, 55, 0.15);
+  box-shadow: var(--shadow-soft);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.hero-address-badge i {
+  color: var(--primary-brown);
+}
+
+/* Larger Hero Image Frame */
+.hero-image-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(44, 26, 19, 0.12);
+  height: 600px;
+  width: 100%;
+}
+
+.hero-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-image-frame:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .hero-heading { font-size: 2.3rem; }
+  .hero-image-frame { height: 380px; }
+}
+
+/* --------------------------------------------------------------------------
+   6. Editorial Storytelling Photo Showcase
+   -------------------------------------------------------------------------- */
+.story-section {
+  padding: 100px 0;
+}
+
+.section-header-minimal {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.section-header-minimal h2 {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+}
+
+.section-header-minimal p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .story-section { padding: 50px 0; }
+  .section-header-minimal h2 { font-size: 2rem; }
+}
+
+.story-block {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 110px;
+}
+
+.story-block:last-child {
+  margin-bottom: 0;
+}
+
+.story-block.reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.story-block.reverse .story-image-wrap {
+  order: 2;
+}
+
+.story-block.reverse .story-content {
+  order: 1;
+}
+
+@media (max-width: 992px) {
+  .story-block,
+  .story-block.reverse {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 70px;
+  }
+  .story-block.reverse .story-image-wrap,
+  .story-block.reverse .story-content {
+    order: unset;
+  }
+}
+
+/* Ensure 100% visibility always (no invisible content) */
+.reveal-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+/* Photo Card Frame */
+.story-image-wrap {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 550px; /* High quality height on desktop */
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 16px 45px rgba(44, 26, 19, 0.08);
+}
+
+.story-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+.story-image-wrap:hover img {
+  transform: scale(1.06);
+  filter: brightness(0.92);
+}
+
+.story-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(44,26,19,0) 50%, rgba(44,26,19,0.5) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 30px;
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.story-image-wrap:hover .story-image-overlay {
+  opacity: 1;
+}
+
+.zoom-icon {
+  color: #FFF;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+}
+
+@media (max-width: 768px) {
+  .story-image-wrap { height: 380px; } /* Clean height on mobile */
+}
+
+.story-number {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--primary-brown);
+  margin-bottom: 10px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.story-title {
+  font-size: 2.4rem;
+  margin-bottom: 18px;
+  color: var(--text-main);
+}
+
+.story-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+}
+
+.story-features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.story-feature-pill {
+  padding: 6px 16px;
+  background-color: var(--bg-card);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-brown);
+}
+
+/* --------------------------------------------------------------------------
+   7. Full-Width Atmosphere Banner
+   -------------------------------------------------------------------------- */
+.atmosphere-banner {
+  position: relative;
+  padding: 120px 0;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  text-align: center;
+  overflow: hidden;
+}
+
+.atmosphere-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  object-fit: cover;
+}
+
+.atmosphere-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.atmosphere-title {
+  font-size: 3rem;
+  color: #FFF;
+  margin-bottom: 18px;
+}
+
+.atmosphere-text {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 35px;
+}
+
+.btn-minimal-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: 50px;
+  background-color: #FFF;
+  color: var(--bg-dark);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.btn-minimal-white:hover {
+  background-color: var(--accent-gold);
+  color: #FFF;
+  transform: translateY(-3px);
+}
+
+/* --------------------------------------------------------------------------
+   8. Minimal Location & Map Section
+   -------------------------------------------------------------------------- */
+.location-section {
+  padding: 100px 0;
+  background-color: var(--bg-surface);
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .location-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+
+.location-title {
+  font-size: 2.6rem;
+  margin-bottom: 16px;
+}
+
+.location-address {
+  font-size: 1.15rem;
+  color: var(--primary-brown);
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.location-highlights {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.location-highlights li {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.location-highlights li i {
+  color: var(--primary-brown);
+}
+
+.btn-outline-minimal {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-radius: 40px;
+  border: 1.5px solid var(--primary-brown);
+  color: var(--primary-brown);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.btn-outline-minimal:hover {
+  background-color: var(--primary-brown);
+  color: #FFF;
+}
+
+.map-card-minimal {
+  background-color: var(--bg-body);
+  border-radius: var(--radius-md);
+  padding: 50px 30px;
+  text-align: center;
+  border: 1px solid rgba(110, 71, 55, 0.1);
+  box-shadow: var(--shadow-soft);
+}
+
+.map-icon {
+  font-size: 3.5rem;
+  color: var(--primary-brown);
+  margin-bottom: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Fullscreen Lightbox Modal
+   -------------------------------------------------------------------------- */
+.lightbox-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 17, 13, 0.96);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.lightbox-content {
+  max-width: 94%;
+  max-height: 84vh;
+  border-radius: 12px;
+  object-fit: contain;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7);
+}
+
+.lightbox-caption {
+  margin-top: 20px;
+  color: #FFF;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  color: #FFF;
+  font-size: 38px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: var(--transition-smooth);
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* --------------------------------------------------------------------------
+   10. Footer
+   -------------------------------------------------------------------------- */
+.footer-minimal {
+  padding: 50px 0;
+  background-color: var(--bg-body);
+  border-top: 1px solid rgba(110, 71, 55, 0.1);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
